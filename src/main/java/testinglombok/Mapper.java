@@ -6,6 +6,7 @@ import testinglombok.entity.TestingLombok;
 public class Mapper {
     public static TestingResponseDto fromEntity(TestingLombok testingLombok){
         TestingResponseDto responseDto=new TestingResponseDto();
+        responseDto.setId(testingLombok.getId());
         responseDto.setName(testingLombok.getName());
         responseDto.setAge(testingLombok.getAge());
         return responseDto;
