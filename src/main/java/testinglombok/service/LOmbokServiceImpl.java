@@ -20,6 +20,7 @@ public class LOmbokServiceImpl implements LombokService {
     @Override
     public TestingResponseDto create(TestingRequestDto dto) {
         TestingLombok testingLombok=new TestingLombok();
+        testingLombok.setId(dto.getId());
         testingLombok.setName(dto.getUserName());
         testingLombok.setAge(dto.getUserAge());
         testingLombokRepo.saveTestigLombok(testingLombok);
@@ -50,5 +51,24 @@ public class LOmbokServiceImpl implements LombokService {
     public TestingResponseDto findById(int id) {
         TestingLombok lombok= testingLombokRepo.findById(id);
     return Mapper.fromEntity(lombok);
+    }
+
+    @Override
+    public TestingResponseDto updateStudent(TestingRequestDto dto) {
+        TestingLombok lombok=testingLombokRepo.findById(dto.getId());
+        if(lombok==null){
+            throw new RuntimeException("NO SUCH STUDENT EXISTS "+dto.getUserName());
+        }
+            lombok.setAge(dto.getUserAge());
+            lombok.setName(dto.getUserName());
+            testingLombokRepo.updating(lombok);
+        return Mapper.fromEntity(lombok);
+    }
+
+    @Override
+    public boolean deleteStudent(int id) {
+        testingLombokRepo.deleteTestigLombok(id);
+
+        return true;
     }
 }

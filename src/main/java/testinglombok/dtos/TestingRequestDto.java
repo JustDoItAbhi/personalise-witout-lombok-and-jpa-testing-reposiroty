@@ -1,8 +1,17 @@
 package testinglombok.dtos;
 
 public class TestingRequestDto {
+    private int id;
     private String userName;
     private int userAge;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getUserName() {
         return userName;

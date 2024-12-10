@@ -10,4 +10,6 @@ public interface LombokService {
     List<TestingResponseDto> getAll();
     TestingResponseDto findByName(String name);
     TestingResponseDto findById(int id);
+    TestingResponseDto updateStudent(TestingRequestDto dto);
+    boolean deleteStudent(int id);
 }

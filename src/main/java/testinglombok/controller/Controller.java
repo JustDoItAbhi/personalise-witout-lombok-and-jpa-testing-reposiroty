@@ -30,4 +30,12 @@ private LombokService lombokService;
     public ResponseEntity<TestingResponseDto> findByName(@PathVariable ("name")String name){
         return ResponseEntity.ok(lombokService.findByName(name));
     }
+    @PutMapping("/update")
+    public ResponseEntity<TestingResponseDto> update(@RequestBody TestingRequestDto dto){
+    return ResponseEntity.ok(lombokService.updateStudent(dto));
+    }
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Boolean> delete(@PathVariable ("id")int id){
+        return ResponseEntity.ok(lombokService.deleteStudent(id));
+    }
 }
